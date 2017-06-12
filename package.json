@@ -4,7 +4,7 @@
   "description": "Redux over Firebase.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "tsc --outDir && jasmine "
   },
   "author": "",
   "license": "MIT",
@@ -14,6 +14,10 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.51",
-    "jasmine": "^2git in.6.0"
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.2",
+    "gulp-tsc": "^1.3.2",
+    "jasmine": "^2git in.6.0",
+    "typescript": "^2.3.4"
   }
 }
