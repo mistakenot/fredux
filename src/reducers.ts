@@ -3,7 +3,7 @@ import {Action} from "shared";
 /*
 * Redux style reducer function.
 */
-type Reducer = (action: Action, state: any) => any
+export type Reducer = (action: Action, state: any) => any
 
 /* 
 * Reducer function with metadata.
@@ -30,12 +30,12 @@ type ReducerDescriptorMap = { [key: string]: ReducerDescriptorTree }
 /*
 * Either a descriptor map or a single reducer descriptor.
 */
-type ReducerDescriptorTree = ReducerDescriptorMap | ReducerDescriptor
+export type ReducerDescriptorTree = ReducerDescriptorMap | ReducerDescriptor
 
 /*
 * Event handler used for executing a reducer.
 */
-type Handler = (reducer: Reducer, action: Action, uri: string) => void;
+export type Handler = (reducer: Reducer, action: Action, uri: string) => void;
 
 export function combineReducers(reducers: ReducerDescriptorMap): ReducerDescriptorTree {
     if (!isReducerDescriptorMap(reducers)) {
@@ -61,7 +61,8 @@ const isReducerDescriptor = (obj: any): boolean => (
 
 
 export const createDispatch = 
-    (reducerTree: ReducerDescriptorTree, onHandle: Handler) => 
+    (reducerTree: ReducerDescriptorTree) => 
+    (onHandle: Handler) =>
     (action: Action): void => {
     
     function handleDispatchWithUri(reducer: ReducerDescriptorTree, action: Action, uri: string): void {
