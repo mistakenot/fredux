@@ -35,7 +35,7 @@ export type ReducerDescriptorTree = ReducerDescriptorMap | ReducerDescriptor
 /*
 * Event handler used for executing a reducer.
 */
-export type Handler = (reducer: Reducer, action: Action, uri: string) => void;
+export type Handler = (reducer: Reducer, action: Action, uri: string) => Promise<any>;
 
 export function combineReducers(reducers: ReducerDescriptorMap): ReducerDescriptorTree {
     if (!isReducerDescriptorMap(reducers)) {

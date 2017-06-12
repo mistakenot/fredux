@@ -1,16 +1,8 @@
-import {Action} from "shared";
-import {Reducer, Handler} from "reducers";
-import * as firebase from "firebase/app";
+import * as firebase from "firebase"
 
-export const createHandler = 
-    (firebaseConfig: any): Handler =>  {
-        let app = firebase.initializeApp(firebaseConfig);
-        let db = app.database();
+export const createFirebase = (config: any, baseUrl: string) => {
+    var app = firebase.initializeApp(config);
+    return app.database().ref(baseUrl);
+}
 
-        return (reducer: Reducer, action: Action, uri: string) => {
-            db.ref(uri).once("value").then(state => {
-                let newState = reducer(action, state);
-                db.ref(uri).set(newState);
-            })
-        }
-    }
+export type Database = firebase.database.Reference;

@@ -40,6 +40,7 @@ describe("createReducer", () => {
     const action = {type: "type", userId: "userid"};
     const testHandler: Handler = (reducer, action, uri) => {
         reducer(action, "state");
+        return Promise.resolve({});
     }
     
     it("creates simple reducer", () => {
