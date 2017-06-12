@@ -8,12 +8,12 @@ export type Reducer = (action: Action, state: any) => any
 /* 
 * Reducer function with metadata.
 */ 
-interface ReducerDescriptor {
+export interface ReducerDescriptor {
 
     /* 
     * The reducer to act on this part of the application state.
     */
-    reducer: Reducer;
+    createReducer: () => Reducer;
 
     /*
     * Whether this reducer can handle the incoming action.
@@ -55,12 +55,12 @@ const isReducerDescriptorMap = (obj: any): boolean => (
     Object.keys(obj).every(k => typeof k === "string"))
 
 const isReducerDescriptor = (obj: any): boolean => (
-    obj["reducer"] && (typeof obj["reducer"] === "function") &&
+    obj["createReducer"] && (typeof obj["createReducer"] === "function") &&
     obj["canHandle"] && (typeof obj["canHandle"] === "function"));
 
 
 
-export const createDispatch = 
+export const createReducer = 
     (reducerTree: ReducerDescriptorTree) => 
     (onHandle: Handler) =>
     (action: Action): void => {
@@ -69,7 +69,7 @@ export const createDispatch =
         if (isReducerDescriptor(reducer)) {
             let descriptor = <ReducerDescriptor> reducer;
             if (descriptor.canHandle(action)) {
-                onHandle(descriptor.reducer, action, uri)
+                onHandle(descriptor.createReducer(), action, uri)
             }
         }
         else if (isReducerDescriptorMap(reducer)) {
