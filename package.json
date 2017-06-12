@@ -1,0 +1,19 @@
+{
+  "name": "frebase",
+  "version": "0.0.1",
+  "description": "Redux over Firebase.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/firebase": "^2.4.31",
+    "firebase": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.51",
+    "jasmine": "^2.6.0"
+  }
+}
