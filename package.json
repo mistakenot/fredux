@@ -1,5 +1,5 @@
 {
-  "name": "frebase",
+  "name": "fredux",
   "version": "0.0.1",
   "description": "Redux over Firebase.",
   "main": "index.js",
