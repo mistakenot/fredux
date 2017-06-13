@@ -18,7 +18,7 @@ describe("Firebase ", () => {
         db.child(uri).set(data, e => {
             expect(e).toBeNull();
             done();
-        });
+        }).catch(fail);
     })
 
     it("reads data", done => {
