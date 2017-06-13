@@ -1,15 +1,15 @@
 {
   "name": "fredux",
   "version": "0.0.1",
-  "description": "Redux over Firebase.",
+  "description": "Redux on top of Firebase.",
   "main": "index.js",
   "scripts": {
-    "clean": "rm ./dist -r",
-    "build": "npm run clean && tsc --outDir dist && cp -R ./spec/support/ dist/spec/",
-    "test": "npm run build && cd ./dist && jasmine",
-    "publish": "npm run clean && tsc --outFile dist/lib.js"
+    "clean": "rm ./build -r",
+    "build": "npm run clean && tsc --outDir build/dist && cp -R ./spec/support/ build/dist/spec/",
+    "test": "npm run build && cd ./build/dist && jasmine",
+    "pack": "npm run build && webpack build/dist/src/index.js build/dist/lib.js"
   },
-  "author": "",
+  "author": "Charlie Daly",
   "license": "MIT",
   "dependencies": {
     "@types/cors": "^2.8.1",
@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.51",
-    "jasmine": "^2.6.0"
+    "jasmine": "^2.6.0",
+    "webpack": "^2.6.1",
+    "webpack-node-externals": "^1.6.0"
   }
 }
